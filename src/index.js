@@ -2,14 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import logo from './logo.svg';
 
-function App() {
-  return (
-    <div className="container-fluid">
-      <h1 className="text-center">This is the start of my quote machine.</h1>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quoteDisplayed: 'This will be the quote to display!',
+    };
+  }
+
+  render() {
+    return (
+      <div className="container-fluid">
+        <div className="row align-items-center min100vh">
+          <div className="card w-50 mx-auto">
+            <div className="card-body">
+              <h5 className="card-title">Random quote machine</h5>
+              <p className="card-text">{this.state.quoteDisplayed}</p>
+              <button className="btn btn-primary">Get new quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 ReactDOM.render(
