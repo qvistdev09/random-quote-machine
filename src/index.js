@@ -19,6 +19,8 @@ class App extends React.Component {
   changeQuote() {
     const randomChoice = random(0, this.state.quotes.quotes.length - 1);
 
+    console.log(encodeURIComponent(this.state.quoteToDisplay));
+
     this.setState({
       currentIndex: randomChoice,
       quoteToDisplay: this.state.quotes.quotes[randomChoice].quote,
@@ -56,14 +58,23 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row align-items-center min100vh">
-          <div className="card mx-auto" style={{maxWidth: "25rem"}}>
+          <div className="card mx-auto" style={{ maxWidth: '20rem' }}>
             <div className="card-header">Random Quote Machine</div>
             <div className="card-body">
               <p className="card-text">{this.state.quoteToDisplay}</p>
-              <p className="card-text text-right font-italic">{this.state.authorToDisplay}</p>
-              <button className="btn btn-primary mx-auto d-block" onClick={this.changeQuote}>
-                Get new quote
+              <p className="card-text text-right font-italic">
+                {this.state.authorToDisplay}
+              </p>
+              <button
+                type="button"
+                className="btn btn-primary mr-2"
+                onClick={this.changeQuote}
+              >
+                <i className="fas fa-plus-square"></i> New quote
               </button>
+              <a href={encodeURIComponent(this.state.quoteToDisplay)} role="button" className="btn btn-info">
+                <i className="fab fa-twitter"></i> Tweet quote
+              </a>
             </div>
           </div>
         </div>
