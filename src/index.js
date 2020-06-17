@@ -56,23 +56,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" id="quote-box">
         <div className="row align-items-center min100vh">
           <div className="card mx-auto" style={{ maxWidth: '20rem' }}>
             <div className="card-header">Random Quote Machine</div>
             <div className="card-body">
-              <p className="card-text">{this.state.quoteToDisplay}</p>
-              <p className="card-text text-right font-italic">
+              <p className="card-text" id="text">{this.state.quoteToDisplay}</p>
+              <p className="card-text text-right font-italic" id="author">
                 {this.state.authorToDisplay}
               </p>
               <button
                 type="button"
                 className="btn btn-primary mr-2"
                 onClick={this.changeQuote}
+                id="new-quote"
               >
                 <i className="fas fa-plus-square"></i> New quote
               </button>
-              <a href={encodeURIComponent(this.state.quoteToDisplay)} role="button" className="btn btn-info">
+              <a href={'https://twitter.com/intent/tweet?text=' + encodeURIComponent('"' + this.state.quoteToDisplay + '" -- ' + this.state.authorToDisplay)} role="button" className="btn btn-info" target="_blank" rel="noopener noreferrer" id="tweet-quote">
                 <i className="fab fa-twitter"></i> Tweet quote
               </a>
             </div>
